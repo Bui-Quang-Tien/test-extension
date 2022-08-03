@@ -21,7 +21,7 @@ namespace Fablab_IoT {
      * @param Wifi_password is the password of your wifi, eg:"12345678"
      */
     //%blockId=ConnectToBLYNK
-    //%block="Get Virtual Pin form $text"
+    //%block="Connect to server IoT $text"
     export function ConnectToBLYNK(auth: string, Wifi_ssid: string, Wifi_password: string): void {
         basic.pause(500);
         serial.writeString("#sid@" + auth + "," + Wifi_ssid + ";" + Wifi_password + "$");
