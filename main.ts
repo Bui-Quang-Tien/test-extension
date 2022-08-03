@@ -8,6 +8,7 @@ namespace FablabIoT {
      * Get Virtual Pin form Blynk server
      * @param text is the string form Iot module, eg: "#V30@1020$"
      */
+    //% weight=40
     //%blockId=GetVirtualPin
     //%block="Get Virtual Pin form $text"
     export function GetVirtualPin(text: string): number {
@@ -20,6 +21,7 @@ namespace FablabIoT {
      * @param Wifi_ssid is the SSID of your wifi, eg:"SSID"
      * @param Wifi_password is the password of your wifi, eg:"password"
      */
+    //% weight=50
     //%blockId=ConnectToBLYNK
     //%block="Connect to BLYNK IoT server:     TX %tx| RX %rx|%auth|%Wifi_ssid|%Wifi_password"
     export function ConnectToBLYNK(tx: SerialPin,rx: SerialPin,auth: string, Wifi_ssid: string, Wifi_password: string): void {
@@ -32,6 +34,7 @@ namespace FablabIoT {
      * Get data form Blynk server
      * @param textData is the string form Iot module, eg:"#V30@1020$"
      */
+    //% weight=30
     //%blockId=GetData
     //%block="Get data form Blynk: $textData"
     export function Data_from_server(textData: string): number{
@@ -44,6 +47,7 @@ namespace FablabIoT {
      * @param V is the Virtual Pin, eg: V30
      * @param data is the value, eg: 9.99
      */
+    //% weight=20
     //%blockId=SendData
     //%block="Send data to Blynk: Virtual Pin $V| data $data"
     export function Send_data_to_server(V: string, data: number) :void{
@@ -53,6 +57,7 @@ namespace FablabIoT {
     * Send notify to Blynk server
     * @param notify is the notification to send, eg: "alert"
     */
+    //% weight=20
     //%blockId=SendNotify
     //%block="Send notification: $notify"
     export function Send_notify_to_server(notify: string): void {
