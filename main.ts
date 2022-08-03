@@ -16,8 +16,6 @@ namespace Fablab_IoT {
     }
     /**
      * Connect to Blynk server
-     * @param tx is the serial pin, eg:P1
-     * @param rx is the serial pin, eg:P0
      * @param auth is the auth form blynk server, eg:"auth"
      * @param Wifi_ssid is the SSID of your wifi, eg:"SSID"
      * @param Wifi_password is the password of your wifi, eg:"password"
