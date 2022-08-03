@@ -8,9 +8,8 @@ namespace FablabIoT {
      * Get Virtual Pin form Blynk server
      * @param text is the string form Iot module, eg: "#V30@1020$"
      */
-    //% weight=40
-    //%blockId=GetVirtualPin
-    //%block="Get Virtual Pin form $text"
+    //% blockId=GetVirtualPin
+    //% block="Get Virtual Pin form $text" weight=40
     export function GetVirtualPin(text: string): number {
         let Vxx = text.substr(text.indexOf("#") + 1, text.indexOf("@") - (text.indexOf("#") + 1));
         return parseInt(Vxx);
@@ -21,9 +20,8 @@ namespace FablabIoT {
      * @param Wifi_ssid is the SSID of your wifi, eg:"SSID"
      * @param Wifi_password is the password of your wifi, eg:"password"
      */
-    //% weight=50
-    //%blockId=ConnectToBLYNK
-    //%block="Connect to BLYNK IoT server:     TX %tx| RX %rx|%auth|%Wifi_ssid|%Wifi_password"
+    //% blockId=ConnectToBLYNK
+    //% block="Connect to BLYNK IoT server: |TX %tx| RX %rx|%auth|%Wifi_ssid|%Wifi_password" weight=50
     export function ConnectToBLYNK(tx: SerialPin,rx: SerialPin,auth: string, Wifi_ssid: string, Wifi_password: string): void {
         serial.redirect(tx, rx, 115200)
         basic.pause(500);
@@ -34,9 +32,8 @@ namespace FablabIoT {
      * Get data form Blynk server
      * @param textData is the string form Iot module, eg:"#V30@1020$"
      */
-    //% weight=30
-    //%blockId=GetData
-    //%block="Get data form Blynk: $textData"
+    //% blockId=GetData
+    //% block="Get data form Blynk: $textData" weight=30
     export function Data_from_server(textData: string): number{
         let Data_Value = textData.substr(textData.indexOf("@") + 1, textData.indexOf("$") - (textData.indexOf("@") + 1));
         return parseFloat(Data_Value);
@@ -47,9 +44,8 @@ namespace FablabIoT {
      * @param V is the Virtual Pin, eg: V30
      * @param data is the value, eg: 9.99
      */
-    //% weight=20
-    //%blockId=SendData
-    //%block="Send data to Blynk: Virtual Pin $V| data $data"
+    //% blockId=SendData
+    //% block="Send data to Blynk: Virtual Pin $V| data $data" weight=20
     export function Send_data_to_server(V: string, data: number) :void{
         serial.writeString("#" + V + "@ " + data.toString() + "$");
     }
@@ -57,9 +53,8 @@ namespace FablabIoT {
     * Send notify to Blynk server
     * @param notify is the notification to send, eg: "alert"
     */
-    //% weight=20
-    //%blockId=SendNotify
-    //%block="Send notification: $notify"
+    //%b lockId=SendNotify
+    //% block="Send notification: $notify" weight=20
     export function Send_notify_to_server(notify: string): void {
         serial.writeString("#nty@ " + notify + "$");
     }
