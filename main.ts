@@ -1,10 +1,16 @@
+/**
+ * MakeCode editor extension for EIU FABLAB Iot module
+ * by Tien Bui
+ */
+//% block="FablabIoT" weight=20 color=#9900cc icon="☁️"
 namespace FablabIoT {
     /**
      * Get Virtual Pin form Blynk server
      * @param text is the string form Iot module, eg: #V30@1020$
      */
     //%blockId=GetVirtualPin
-    //%block="Get Virtual Pin"
+    //%block="Get Virtual Pin form $text"
+
     export function GetVirtualPin(text: string): number {
         let Vxx = text.substr(text.indexOf("#") + 1, text.indexOf("@") - (text.indexOf("#") + 1));
         return parseInt(Vxx);
