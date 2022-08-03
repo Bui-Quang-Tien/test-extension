@@ -3,7 +3,7 @@
  * by Tien Bui
  */
 //% block="FablabIoT" weight=20 color=#9900cc icon="☁"
-namespace FablabIoT {
+namespace Fablab_IoT {
     /**
      * Get Virtual Pin form Blynk server
      * @param text is the string form Iot module, eg: #V30@1020$
@@ -15,8 +15,10 @@ namespace FablabIoT {
         return parseInt(Vxx);
     }
     /**
-     * Get Virtual Pin form Blynk server
-     * @param text is the string form Iot module, eg: #V30@1020$
+     * Connect to Blynk server
+     * @param auth is the auth form blynk server, eg:"    "
+     * @param Wifi_ssid is the SSID of your wifi, eg:"EIU FABLAB"
+     * @param Wifi_password is the password of your wifi, eg:"12345678"
      */
     //%blockId=ConnectToBLYNK
     //%block="Get Virtual Pin form $text"
