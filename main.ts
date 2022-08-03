@@ -1,3 +1,24 @@
-basic.forever(function () {
-	
-})
+namespace FablabIoT {
+    /**
+     * Get Virtual Pin form Blynk server
+     * @param text is the string form Iot module, eg: #V30@1020$
+     */
+    //%blockId=GetVirtualPin
+    //%block="Get Virtual Pin"
+    export function GetVirtualPin(text: string): number {
+        let Vxx = text.substr(text.indexOf("#") + 1, text.indexOf("@") - (text.indexOf("#") + 1));
+        return parseInt(Vxx);
+    }
+    export function Connect_to_BLYNK(auth: string, Wifi_ssid: string, Wifi_password: string): void {
+        basic.pause(500);
+        serial.writeString("#sid@" + auth + "," + Wifi_ssid + ";" + Wifi_password + "$");
+        basic.pause(5000);
+    }
+    export function Data_from_server(text: string): number{
+        let Data_Value = text.substr(text.indexOf("@") + 1, text.indexOf("$") - (text.indexOf("@") + 1));
+        return parseFloat(Data_Value);
+    }
+    export function Send_data_to_server(V: string, data: number) :void{
+        serial.writeString("#" + V + "@" + data + "$");
+    }
+}
