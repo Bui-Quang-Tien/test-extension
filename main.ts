@@ -21,16 +21,30 @@ namespace Fablab_IoT {
      * @param Wifi_password is the password of your wifi, eg:"12345678"
      */
     //%blockId=ConnectToBLYNK
-    //%block="Connect to server IoT $text"
+    //%block="Connect to server IoT auth %auth|SSID %Wifi_ssid|password %Wifi_password"
     export function ConnectToBLYNK(auth: string, Wifi_ssid: string, Wifi_password: string): void {
         basic.pause(500);
         serial.writeString("#sid@" + auth + "," + Wifi_ssid + ";" + Wifi_password + "$");
         basic.pause(5000);
     }
-    export function Data_from_server(text: string): number{
-        let Data_Value = text.substr(text.indexOf("@") + 1, text.indexOf("$") - (text.indexOf("@") + 1));
+    /**
+     * Get data form Blynk server
+     * @param text is the string form Iot module, eg: #V30@1020$
+     */
+    //%blockId=GetData
+    //%block="Get data form $textData"
+    export function Data_from_server(textData: string): number{
+        let Data_Value = textData.substr(textData.indexOf("@") + 1, textData.indexOf("$") - (textData.indexOf("@") + 1));
         return parseFloat(Data_Value);
+
     }
+    /**
+     * Send data to Blynk server
+     * @param V is the Virtual Pin, eg: V30
+     * @param data is the value, eg: 9.99
+     */
+    //%blockId=SendData
+    //%block="Virtual Pin $V| data $data"
     export function Send_data_to_server(V: string, data: number) :void{
         serial.writeString("#" + V + "@" + data + "$");
     }
