@@ -25,7 +25,7 @@ namespace Fablab_IoT {
     //%blockId=ConnectToBLYNK
     //%block="Connect to server IoT: tx %P1| rx %P0|%auth|%Wifi_ssid|%Wifi_password"
     export function ConnectToBLYNK(tx: SerialPin,rx: SerialPin,auth: string, Wifi_ssid: string, Wifi_password: string): void {
-        
+        serial.redirect(tx, rx, 115200)
         basic.pause(500);
         serial.writeString("#sid@" + auth + "," + Wifi_ssid + ";" + Wifi_password + "$");
         basic.pause(5000);
