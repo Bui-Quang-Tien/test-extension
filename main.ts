@@ -48,5 +48,6 @@ namespace FablabIoT {
     //%block="Send data to Blynk: Virtual Pin $V| data $data"
     export function Send_data_to_server(V: string, data: number) :void{
         serial.writeString("#" + V + "@ " + data.toString() + "$");
+        serial.writeLine("");
     }
 }
