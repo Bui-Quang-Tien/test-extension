@@ -16,14 +16,14 @@ namespace Fablab_IoT {
     }
     /**
      * Connect to Blynk server
-     * @param tx is the serial pin, eg:"P1"
-     * @param rx is the serial pin, eg:"P0"
+     * @param tx is the serial pin, eg:P1
+     * @param rx is the serial pin, eg:P0
      * @param auth is the auth form blynk server, eg:"auth"
      * @param Wifi_ssid is the SSID of your wifi, eg:"SSID"
      * @param Wifi_password is the password of your wifi, eg:"password"
      */
     //%blockId=ConnectToBLYNK
-    //%block="Connect to server IoT: tx %P1| rx %P0|%auth|%Wifi_ssid|%Wifi_password"
+    //%block="Connect to server IoT: TX %tx| RX %rx|%auth|%Wifi_ssid|%Wifi_password"
     export function ConnectToBLYNK(tx: SerialPin,rx: SerialPin,auth: string, Wifi_ssid: string, Wifi_password: string): void {
         serial.redirect(tx, rx, 115200)
         basic.pause(500);
