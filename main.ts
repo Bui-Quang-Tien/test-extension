@@ -3,7 +3,7 @@
  * by Tien Bui
  */
 //% block="Fablab IoT" weight=20 color=#9900cc icon="☁"
-namespace FablabIoT {
+namespace EIU_FablabIoT {
     /**
      * Get Virtual Pin form Blynk server
      * @param text is the string form Iot module, eg: "#V30@1020$"
@@ -21,7 +21,7 @@ namespace FablabIoT {
      * @param Wifi_password is the password of your wifi, eg:"password"
      */
     //% blockId=ConnectToBLYNK
-    //% block="Connect to BLYNK IoT server: |TX %tx| RX %rx|%auth|%Wifi_ssid|%Wifi_password" weight=50
+    //% block="Connect to BLYNK IoT server:TX %tx|RX %rx|%auth|%Wifi_ssid|%Wifi_password" weight=50
     export function ConnectToBLYNK(tx: SerialPin,rx: SerialPin,auth: string, Wifi_ssid: string, Wifi_password: string): void {
         serial.redirect(tx, rx, 115200)
         basic.pause(500);
@@ -57,5 +57,15 @@ namespace FablabIoT {
     //% block="Send notification: $notify" weight=20
     export function Send_notify_to_server(notify: string): void {
         serial.writeString("#nty@ " + notify + "$");
+    }
+    /**
+    * Control DC motor of robot
+    * @param left is the speed of left motor, eg: 0
+    * @param right is the speed of right motor, eg: 0
+    */
+    //%b lockId=RobotSpeed
+    //% block="Robot move with left speed $left| right speed $right" weight=20
+    export function RobotSpeed(left: number, right: number): void {
+        
     }
 }
