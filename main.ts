@@ -64,7 +64,7 @@ namespace EIUFablabIoT {
  * MakeCode editor extension for EIU FABLAB Robot module
  * by Tien Bui
  */
-//% block="EIU Fablab robot" weight=20 color=#9900cc icon=""
+//% block="EIU Fablab robot" weight=20 color=#9900cc icon="\uf14e"
 namespace EIUFablabRobot {
     let leftMotorPin1: AnalogPin;
     let leftMotorPin2: AnalogPin;
