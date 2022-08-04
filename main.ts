@@ -3,14 +3,14 @@
  * by Tien Bui
  */
 //% block="EIU Fablab IoT" weight=20 color=#9900cc icon="☁"
-namespace EIU_FablabIoT {
+namespace EIUFablabIoT {
     /**
      * Get Virtual Pin form Blynk server
      * @param text is the string form Iot module, eg: "#V30@1020$"
      */
     //% blockId=GetVirtualPin
     //% block="Get Virtual Pin form $text" weight=40
-    export function GetVirtualPin(text: string): number {
+    export function getVirtualPin(text: string): number {
         let Vxx = text.substr(text.indexOf("#") + 1, text.indexOf("@") - (text.indexOf("#") + 1));
         return parseInt(Vxx);
     }
@@ -22,7 +22,7 @@ namespace EIU_FablabIoT {
      */
     //% blockId=ConnectToBLYNK
     //% block="Connect to BLYNK IoT server:TX %tx|RX %rx|%auth|%Wifi_ssid|%Wifi_password" weight=50
-    export function ConnectToBLYNK(tx: SerialPin, rx: SerialPin, auth: string, Wifi_ssid: string, Wifi_password: string): void {
+    export function connectToBLYNK(tx: SerialPin, rx: SerialPin, auth: string, Wifi_ssid: string, Wifi_password: string): void {
         serial.redirect(tx, rx, 115200)
         basic.pause(500);
         serial.writeString("#sid@" + auth + "," + Wifi_ssid + ";" + Wifi_password + "$");
@@ -34,7 +34,7 @@ namespace EIU_FablabIoT {
      */
     //% blockId=GetData
     //% block="Get data form Blynk: $textData" weight=30
-    export function Data_from_server(textData: string): number {
+    export function dataFromServer(textData: string): number {
         let Data_Value = textData.substr(textData.indexOf("@") + 1, textData.indexOf("$") - (textData.indexOf("@") + 1));
         return parseFloat(Data_Value);
 
@@ -46,7 +46,7 @@ namespace EIU_FablabIoT {
      */
     //% blockId=SendData
     //% block="Send data to Blynk: Virtual Pin $V| data $data" weight=20
-    export function Send_data_to_server(V: string, data: number): void {
+    export function sendDataToServer(V: string, data: number): void {
         serial.writeString("#" + V + "@ " + data.toString() + "$");
     }
     /**
@@ -55,7 +55,7 @@ namespace EIU_FablabIoT {
     */
     //%b lockId=SendNotify
     //% block="Send notification: $notify" weight=20
-    export function Send_notify_to_server(notify: string): void {
+    export function sendNotifyToServer(notify: string): void {
         serial.writeString("#nty@ " + notify + "$");
     }
 
@@ -64,8 +64,8 @@ namespace EIU_FablabIoT {
  * MakeCode editor extension for EIU FABLAB Robot module
  * by Tien Bui
  */
-//% block="EIU Fablab robot" weight=20 color=#9900cc icon="🚓"
-namespace EIU_Fablab_Robot {
+//% block="EIU Fablab robot" weight=20 color=#9900cc icon="&#xf63b;"
+namespace EIUFablabRobot {
     let leftMotorPin1: AnalogPin;
     let leftMotorPin2: AnalogPin;
     let rightMotorPin1: AnalogPin;
