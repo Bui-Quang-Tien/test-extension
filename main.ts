@@ -127,12 +127,11 @@ namespace EIUFablabRobot {
         }
     }
     /**
-    * Control right DC motor of robot
-    * @param right_speed is the speed of right motor, eg: 0
+    * Stop moving of robot
+    * 
     */
-    //% blockId=RightSpeed
-    //% block="Robot move with right speed $right_speed" weight=20
-    //% right_speed.min=-1000 right_speed.max=1000
+    //% blockId=StopRobot
+    //% block="Robot STOP" weight=20
     export function robotStop(): void {
         pins.analogWritePin(leftMotorPin1, 0);
         pins.analogWritePin(leftMotorPin2, 0);
