@@ -22,7 +22,7 @@ namespace EIU_FablabIoT {
      */
     //% blockId=ConnectToBLYNK
     //% block="Connect to BLYNK IoT server:TX %tx|RX %rx|%auth|%Wifi_ssid|%Wifi_password" weight=50
-    export function ConnectToBLYNK(tx: SerialPin,rx: SerialPin,auth: string, Wifi_ssid: string, Wifi_password: string): void {
+    export function ConnectToBLYNK(tx: SerialPin, rx: SerialPin, auth: string, Wifi_ssid: string, Wifi_password: string): void {
         serial.redirect(tx, rx, 115200)
         basic.pause(500);
         serial.writeString("#sid@" + auth + "," + Wifi_ssid + ";" + Wifi_password + "$");
@@ -34,7 +34,7 @@ namespace EIU_FablabIoT {
      */
     //% blockId=GetData
     //% block="Get data form Blynk: $textData" weight=30
-    export function Data_from_server(textData: string): number{
+    export function Data_from_server(textData: string): number {
         let Data_Value = textData.substr(textData.indexOf("@") + 1, textData.indexOf("$") - (textData.indexOf("@") + 1));
         return parseFloat(Data_Value);
 
@@ -46,7 +46,7 @@ namespace EIU_FablabIoT {
      */
     //% blockId=SendData
     //% block="Send data to Blynk: Virtual Pin $V| data $data" weight=20
-    export function Send_data_to_server(V: string, data: number) :void{
+    export function Send_data_to_server(V: string, data: number): void {
         serial.writeString("#" + V + "@ " + data.toString() + "$");
     }
     /**
@@ -64,16 +64,66 @@ namespace EIU_FablabIoT {
  * MakeCode editor extension for EIU FABLAB Robot module
  * by Tien Bui
  */
-//% block="EIU Fablab robot" weight=20 color=#9900cc icon=":robot:"
+//% block="EIU Fablab robot" weight=20 color=#9900cc icon="Robot"
 namespace EIU_Fablab_Robot {
+    let leftMotorPin1: AnalogPin;
+    let leftMotorPin2: AnalogPin;
+    let rightMotorPin1: AnalogPin;
+    let rightMotorPin2: AnalogPin;
     /**
-* Control DC motor of robot
-* @param left is the speed of left motor, eg: 0
-* @param right is the speed of right motor, eg: 0
-*/
-    //%b lockId=RobotSpeed
+    * Control DC motor of robot
+    * @param left is the speed of left motor, eg: 0
+    * @param right is the speed of right motor, eg: 0
+    */
+    //% blockId=RobotSpeed
     //% block="Robot move with left speed $left| right speed $right" weight=20
+    //% left.min=-1000 left.max=1000 right.min=-1000 right.max=1000
     export function RobotSpeed(left: number, right: number): void {
-
+        if (left >= 0) {
+            pins.analogWritePin(leftMotorPin1, 0);
+            pins.analogWritePin(leftMotorPin2, left);
+        } else {
+            pins.analogWritePin(leftMotorPin1, -left);
+            pins.analogWritePin(leftMotorPin2, 0);
+        }
+        if (right >= 0) {
+            pins.analogWritePin(rightMotorPin1, 0);
+            pins.analogWritePin(rightMotorPin2, right);
+        } else {
+            pins.analogWritePin(rightMotorPin1, -right);
+            pins.analogWritePin(rightMotorPin2, 0);
+        }
+    }
+    /**
+    * Control left DC motor of robot
+    * @param left_speed is the speed of left motor, eg: 0
+    */
+    //% blockId=LeftSpeed
+    //% block="Robot move with left speed $left_speed" weight=20
+    //% left_speed.min=-1000 left_speed.max=1000
+    export function leftSpeed(left_speed: number): void {
+        if (left_speed >= 0) {
+            pins.analogWritePin(leftMotorPin1, 0);
+            pins.analogWritePin(leftMotorPin2, left_speed);
+        } else {
+            pins.analogWritePin(leftMotorPin1, -left_speed);
+            pins.analogWritePin(leftMotorPin2, 0);
+        }
+    }
+    /**
+    * Control right DC motor of robot
+    * @param right_speed is the speed of right motor, eg: 0
+    */
+    //% blockId=RightSpeed
+    //% block="Robot move with right speed $right_speed" weight=20
+    //% right_speed.min=-1000 right_speed.max=1000
+    export function rightSpeed(right_speed: number): void {
+        if (right_speed >= 0) {
+            pins.analogWritePin(rightMotorPin1, 0);
+            pins.analogWritePin(rightMotorPin2, right_speed);
+        } else {
+            pins.analogWritePin(rightMotorPin1, -right_speed);
+            pins.analogWritePin(rightMotorPin2, 0);
+        }
     }
 }
