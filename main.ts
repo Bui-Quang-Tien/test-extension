@@ -64,7 +64,7 @@ namespace EIUFablabIoT {
  * MakeCode editor extension for EIU FABLAB Robot module
  * by Tien Bui
  */
-//% block="EIU Fablab robot" weight=20 color=#9900cc icon="\uf14e"
+//% block="EIU Fablab robot" weight=20 color=#9900cc icon="\uf0f9"
 namespace EIUFablabRobot {
     let leftMotorPin1: AnalogPin;
     let leftMotorPin2: AnalogPin;
@@ -153,7 +153,7 @@ enum PingUnit {
 /**
  * MakeCode editor extension for EIU FABLAB SONAR
  */
-//% block="Ultrasonic" color=#9900cc icon=🚓
+//% block="Ultrasonic" color=#9900cc icon="\uf14e"
 namespace sonar {
     /**
      * Send a ping and get the echo time (in microseconds) as a result
