@@ -64,7 +64,7 @@ namespace EIU_FablabIoT {
  * MakeCode editor extension for EIU FABLAB Robot module
  * by Tien Bui
  */
-//% block="EIU Fablab robot" weight=20 color=#9900cc icon="🤖"
+//% block="EIU Fablab robot" weight=20 color=#9900cc icon=":robot:"
 namespace EIU_Fablab_Robot {
     /**
 * Control DC motor of robot
