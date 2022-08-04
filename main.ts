@@ -2,7 +2,7 @@
  * MakeCode editor extension for EIU FABLAB Iot module
  * by Tien Bui
  */
-//% block="Fablab IoT" weight=20 color=#9900cc icon="☁"
+//% block="EIU Fablab IoT" weight=20 color=#9900cc icon="☁"
 namespace EIU_FablabIoT {
     /**
      * Get Virtual Pin form Blynk server
@@ -58,14 +58,22 @@ namespace EIU_FablabIoT {
     export function Send_notify_to_server(notify: string): void {
         serial.writeString("#nty@ " + notify + "$");
     }
+
+}
+/**
+ * MakeCode editor extension for EIU FABLAB Robot module
+ * by Tien Bui
+ */
+//% block="EIU Fablab robot" weight=20 color=#9900cc icon="🤖"
+namespace EIU_Fablab_Robot {
     /**
-    * Control DC motor of robot
-    * @param left is the speed of left motor, eg: 0
-    * @param right is the speed of right motor, eg: 0
-    */
+* Control DC motor of robot
+* @param left is the speed of left motor, eg: 0
+* @param right is the speed of right motor, eg: 0
+*/
     //%b lockId=RobotSpeed
     //% block="Robot move with left speed $left| right speed $right" weight=20
     export function RobotSpeed(left: number, right: number): void {
-        
+
     }
 }
