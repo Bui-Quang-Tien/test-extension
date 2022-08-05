@@ -78,7 +78,7 @@ namespace EIUFablabRobot {
     * @param Pin4 is the pin to control robot, eg: P3
     */
     //% blockId=initializeRobot
-    //% block="Robot with left $Pin1|$Pin2| right $Pin3|$Pin4" weight=20
+    //% block="Robot with left motor: $Pin1|$Pin2| and right motor: $Pin3|$Pin4" weight=30
     export function initialzeRobot(Pin1: AnalogPin, Pin2: AnalogPin, Pin3: AnalogPin, Pin4: AnalogPin, ): void{
         leftMotorPin1 = Pin1;
         leftMotorPin2 = Pin2;
