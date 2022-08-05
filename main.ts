@@ -2,7 +2,7 @@
  * MakeCode editor extension for EIU FABLAB Iot module
  * by Tien Bui
  */
-//% block="EIU Fablab IoT" weight=20 color=#9900cc icon="☁"
+//% block="EIU Fablab IoT" weight=20 color=#00ff00 icon="☁"
 namespace EIUFablabIoT {
     /**
      * Get Virtual Pin form Blynk server
@@ -64,7 +64,7 @@ namespace EIUFablabIoT {
  * MakeCode editor extension for EIU FABLAB Robot module
  * by Tien Bui
  */
-//% block="EIU Fablab robot" weight=20 color=#9900cc icon="\uf0f9"
+//% block="EIU Fablab robot" weight=20 color=#ff3300 icon="\uf0f9"
 namespace EIUFablabRobot {
     let leftMotorPin1: AnalogPin;
     let leftMotorPin2: AnalogPin;
@@ -152,7 +152,7 @@ enum PingUnit {
 /**
  * MakeCode editor extension for EIU FABLAB SONAR
  */
-//% block="Ultrasonic" color=#9900cc icon="\uf14e"
+//% block="Ultrasonic" color=#ffff00 icon="\uf14e"
 namespace sonar {
     /**
      * Send a ping and get the echo time (in microseconds) as a result
