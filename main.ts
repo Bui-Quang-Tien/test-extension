@@ -71,6 +71,21 @@ namespace EIUFablabRobot {
     let rightMotorPin1: AnalogPin;
     let rightMotorPin2: AnalogPin;
     /**
+    * Initialze robot module
+    * @param Pin1 is the pin to control robot, eg: P0
+    * @param Pin2 is the pin to control robot, eg: P1
+    * @param Pin3 is the pin to control robot, eg: P2
+    * @param Pin4 is the pin to control robot, eg: P3
+    */
+    //% blockId=initializeRobot
+    //% block="Robot with left $Pin1|$Pin2| right $Pin3|$Pin4" weight=20
+    export function initialzeRobot(Pin1: AnalogPin, Pin2: AnalogPin, Pin3: AnalogPin, Pin4: AnalogPin, ): void{
+        leftMotorPin1 = Pin1;
+        leftMotorPin2 = Pin2;
+        rightMotorPin1 = Pin3;
+        rightMotorPin2 = Pin4;
+    }
+    /**
     * Control DC motor of robot
     * @param left is the speed of left motor, eg: 0
     * @param right is the speed of right motor, eg: 0
@@ -152,7 +167,7 @@ enum PingUnit {
 /**
  * MakeCode editor extension for EIU FABLAB SONAR
  */
-//% block="Ultrasonic" color=#ffff00 icon="\uf14e"
+//% block="Ultrasonic" color=#2929a3 icon="\uf14e"
 namespace sonar {
     /**
      * Send a ping and get the echo time (in microseconds) as a result
@@ -162,7 +177,7 @@ namespace sonar {
      * @param maxCmDistance maximum distance in centimeters (default is 500)
      */
     //% blockId=sonar_ping block="ping trig %trig|echo %echo|unit %unit"
-    export function ping(trig: DigitalPin, echo: DigitalPin, unit: PingUnit, maxCmDistance = 500): number {
+    export function ping(trig: DigitalPin, echo: DigitalPin, unit: PingUnit, maxCmDistance = 400): number {
         // send pulse
         pins.setPull(trig, PinPullMode.PullNone);
         pins.digitalWritePin(trig, 0);
