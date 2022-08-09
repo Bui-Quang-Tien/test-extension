@@ -4,34 +4,58 @@
  */
 //% block="EIU Fablab IoT" weight=20 color=#00ff00 icon="☁"
 namespace EIUFablabIoT {
+    export enum TimeType {
+        //% block="second" enumval=0
+        SECOND,
+        //% block="minute" enumval=1
+        MINUTE,
+        //% block="hour" enumval=2
+        HOUR,
+        //% block="day" enumval=3
+        DAY,
+        //% block="month" enumval=4
+        MONTH,
+        //% block="year" enumval=5
+        YEAR
+    }
     let hour: number
     let minute: number
     let second: number
     let day: number
     let month: number
     let year: number
-    /**
-    * Required time form Blynk server
-    */
-    //% blockId=RequiredTime
-    //% block="Required time" weight=40
-    export function requiredTime(): void {
-        serial.writeLine("#tim@sync$");
-        basic.pause(1000);
-    }
+
     /**
     * Get time form Blynk server
     * @param textTime is the string form Iot module, eg: "#tim@sync$"
     */
     //% blockId=GetTime
-    //% block="Get Time" weight=40
-    export function getTime(textTime: string): void{
-        hour = parseInt(textTime.substr(textTime.indexOf("&") + 1, textTime.indexOf("A") - (textTime.indexOf("&") + 1)));
-        minute = parseInt(textTime.substr(textTime.indexOf("A") + 1, textTime.indexOf("B") - (textTime.indexOf("A") + 1)));
-        second = parseInt(textTime.substr(textTime.indexOf("B") + 1, textTime.indexOf("C") - (textTime.indexOf("B") + 1)));
-        day = parseInt(textTime.substr(textTime.indexOf("C") + 1, textTime.indexOf("D") - (textTime.indexOf("C") + 1)));
-        month = parseInt(textTime.substr(textTime.indexOf("D") + 1, textTime.indexOf("E") - (textTime.indexOf("D") + 1)));
-        year = parseInt(textTime.substr(textTime.indexOf("E") + 1, textTime.indexOf("$") - (textTime.indexOf("E") + 1)));
+    //% block="$data form $textTime" weight=40
+    export function getTime(data: TimeType, textTime: string): number {
+        serial.writeLine("#tim@sync$");
+        basic.pause(100);
+        switch (data) {
+            case 0:
+                return parseInt(textTime.substr(textTime.indexOf("B") + 1, textTime.indexOf("C") - (textTime.indexOf("B") + 1)));
+                break
+            case 1:
+                return parseInt(textTime.substr(textTime.indexOf("A") + 1, textTime.indexOf("B") - (textTime.indexOf("A") + 1)));
+                break
+            case 2:
+                return parseInt(textTime.substr(textTime.indexOf("&") + 1, textTime.indexOf("A") - (textTime.indexOf("&") + 1)));
+                break
+            case 3:
+                return parseInt(textTime.substr(textTime.indexOf("C") + 1, textTime.indexOf("D") - (textTime.indexOf("C") + 1)));
+                break
+            case 4:
+                return parseInt(textTime.substr(textTime.indexOf("D") + 1, textTime.indexOf("E") - (textTime.indexOf("D") + 1)));
+                break
+            case 5:
+                return parseInt(textTime.substr(textTime.indexOf("E") + 1, textTime.indexOf("$") - (textTime.indexOf("E") + 1)));
+                break
+            default:
+                return 0
+        }
     }
     /**
      * Get Virtual Pin form Blynk server
