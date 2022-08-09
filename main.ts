@@ -24,7 +24,15 @@ namespace EIUFablabIoT {
     let day: number
     let month: number
     let year: number
-
+    /**
+    * Required time form Blynk server
+    */
+    //% blockId=RequiredTime
+    //% block="Read internet time" weight=40
+    export function requiredTime(): void {
+        serial.writeLine("#tim@sync$");
+        basic.pause(100);
+    }
     /**
     * Get time form Blynk server
     * @param textTime is the string form Iot module, eg: "#tim@sync$"
@@ -32,8 +40,6 @@ namespace EIUFablabIoT {
     //% blockId=GetTime
     //% block="$data form $textTime" weight=40
     export function getTime(data: TimeType, textTime: string): number {
-        serial.writeLine("#tim@sync$");
-        basic.pause(100);
         switch (data) {
             case 0:
                 return parseInt(textTime.substr(textTime.indexOf("B") + 1, textTime.indexOf("C") - (textTime.indexOf("B") + 1)));
