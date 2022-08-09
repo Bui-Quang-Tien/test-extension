@@ -4,6 +4,35 @@
  */
 //% block="EIU Fablab IoT" weight=20 color=#00ff00 icon="☁"
 namespace EIUFablabIoT {
+    let hour: number
+    let minute: number
+    let second: number
+    let day: number
+    let month: number
+    let year: number
+    /**
+    * Required time form Blynk server
+    */
+    //% blockId=RequiredTime
+    //% block="Required time" weight=40
+    export function requiredTime(): void {
+        serial.writeLine("#tim@sync$");
+        basic.pause(1000);
+    }
+    /**
+    * Get time form Blynk server
+    * @param textTime is the string form Iot module, eg: "#tim@sync$"
+    */
+    //% blockId=GetTime
+    //% block="Get Time" weight=40
+    export function getTime(textTime: string): void{
+        hour = parseInt(textTime.substr(textTime.indexOf("&") + 1, textTime.indexOf("A") - (textTime.indexOf("&") + 1)));
+        minute = parseInt(textTime.substr(textTime.indexOf("A") + 1, textTime.indexOf("B") - (textTime.indexOf("A") + 1)));
+        second = parseInt(textTime.substr(textTime.indexOf("B") + 1, textTime.indexOf("C") - (textTime.indexOf("B") + 1)));
+        day = parseInt(textTime.substr(textTime.indexOf("C") + 1, textTime.indexOf("D") - (textTime.indexOf("C") + 1)));
+        month = parseInt(textTime.substr(textTime.indexOf("D") + 1, textTime.indexOf("E") - (textTime.indexOf("D") + 1)));
+        year = parseInt(textTime.substr(textTime.indexOf("E") + 1, textTime.indexOf("$") - (textTime.indexOf("E") + 1)));
+    }
     /**
      * Get Virtual Pin form Blynk server
      * @param text is the string form Iot module, eg: "#V30@1020$"
@@ -79,7 +108,7 @@ namespace EIUFablabRobot {
     */
     //% blockId=initializeRobot
     //% block="Robot with left motor: $Pin1|$Pin2| and right motor: $Pin3|$Pin4" weight=30
-    export function initialzeRobot(Pin1: AnalogPin, Pin2: AnalogPin, Pin3: AnalogPin, Pin4: AnalogPin, ): void{
+    export function initialzeRobot(Pin1: AnalogPin, Pin2: AnalogPin, Pin3: AnalogPin, Pin4: AnalogPin,): void {
         leftMotorPin1 = Pin1;
         leftMotorPin2 = Pin2;
         rightMotorPin1 = Pin3;
