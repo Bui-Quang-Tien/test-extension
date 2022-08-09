@@ -35,7 +35,7 @@ namespace EIUFablabIoT {
     }
     /**
     * Get time form Blynk server
-    * @param textTime is the string form Iot module, eg: "#tim@sync$"
+    * @param textTime is the string form Iot module, eg: "hh:mm:ss"
     */
     //% blockId=GetTime
     //% block="$data form $textTime" weight=40
@@ -57,7 +57,7 @@ namespace EIUFablabIoT {
                 return parseInt(textTime.substr(textTime.indexOf("D") + 1, textTime.indexOf("E") - (textTime.indexOf("D") + 1)));
                 break
             case 5:
-                return parseInt(textTime.substr(textTime.indexOf("E") + 1, textTime.indexOf("$") - (textTime.indexOf("E") + 1)));
+                return parseInt(textTime.substr(textTime.indexOf("E") + 1, textTime.indexOf("$") - (textTime.indexOf("E"))));
                 break
             default:
                 return 0
