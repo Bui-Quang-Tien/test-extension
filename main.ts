@@ -24,7 +24,7 @@ namespace EIUFablabIoT {
     let day: number
     let month: number
     let year: number
-    let textTime: string
+   // let textTime: string
     /**
     * Required time form Blynk server
     */
@@ -33,15 +33,15 @@ namespace EIUFablabIoT {
      function requiredTime(): void {
         serial.writeLine("#tim@sync$");
         basic.pause(100);
-        textTime = serial.readUntil(serial.delimiters(Delimiters.Dollar));
+    //    textTime = serial.readUntil(serial.delimiters(Delimiters.Dollar));
     }
     /**
     * Get time form Blynk server
     * 
     */
     //% blockId=GetTime
-    //% block="$data" weight=40
-    export function getTime(data: TimeType): number {
+    //% block="$data" form $textTime weight=40
+    export function getTime(data: TimeType,textTime: string ): number {
         requiredTime();
         switch (data) {
             case 0:
