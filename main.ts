@@ -93,7 +93,7 @@ namespace EIUFablabIoT {
     //% blockId=GetVirtualPin
     //% block="Get Virtual Pin form $text" weight=40
     export function getVirtualPin(text: string): number {
-        let Vxx = text.substr(text.indexOf("#") + 1, text.indexOf("@") - (text.indexOf("#") + 1));
+        let Vxx = text.substr(text.indexOf("V") + 1, text.indexOf("@") - (text.indexOf("#") + 1));
         return parseInt(Vxx);
     }
     /**
