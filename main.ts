@@ -29,8 +29,6 @@ namespace EIUFablabIoT {
     /**
     * Required time form Blynk server
     */
-    //% blockId=RequiredTime
-    
      function requiredTime(): void {
         if((input.runningTime() - milisecond) >= 1000){
             serial.writeLine("#tim@sync$");
