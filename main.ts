@@ -24,40 +24,61 @@ namespace EIUFablabIoT {
     let day: number
     let month: number
     let year: number
+    let textTime: string
     /**
     * Required time form Blynk server
     */
     //% blockId=RequiredTime
-    //% block="Read internet time" weight=40
-    export function requiredTime(): void {
+    
+     function requiredTime(): void {
         serial.writeLine("#tim@sync$");
-        basic.pause(100);
+        basic.pause(10);
+        textTime = serial.readUntil(serial.delimiters(Delimiters.Dollar));
     }
     /**
     * Get time form Blynk server
-    * @param textTime is the string form Iot module, eg: "hh:mm:ss"
+    * 
     */
     //% blockId=GetTime
-    //% block="$data form $textTime" weight=40
-    export function getTime(data: TimeType, textTime: string): number {
+    //% block="$data" weight=40
+    export function getTime(data: TimeType): number {
+        requiredTime();
         switch (data) {
             case 0:
-                return parseInt(textTime.substr(textTime.indexOf("B") + 1, textTime.indexOf("C") - (textTime.indexOf("B") + 1)));
+                if(textTime.includes("&")){
+                    second = parseInt(textTime.substr(textTime.indexOf("B") + 1, textTime.indexOf("C") - (textTime.indexOf("B") + 1)));
+                }
+                return second;
                 break
             case 1:
-                return parseInt(textTime.substr(textTime.indexOf("A") + 1, textTime.indexOf("B") - (textTime.indexOf("A") + 1)));
+                if (textTime.includes("&")) {
+                minute = parseInt(textTime.substr(textTime.indexOf("A") + 1, textTime.indexOf("B") - (textTime.indexOf("A") + 1)));
+                }
+                return minute;
                 break
             case 2:
-                return parseInt(textTime.substr(textTime.indexOf("&") + 1, textTime.indexOf("A") - (textTime.indexOf("&") + 1)));
+                if (textTime.includes("&")) {
+                hour = parseInt(textTime.substr(textTime.indexOf("&") + 1, textTime.indexOf("A") - (textTime.indexOf("&") + 1)));
+                }
+                return hour;
                 break
             case 3:
-                return parseInt(textTime.substr(textTime.indexOf("C") + 1, textTime.indexOf("D") - (textTime.indexOf("C") + 1)));
+                if (textTime.includes("&")) {
+                day = parseInt(textTime.substr(textTime.indexOf("C") + 1, textTime.indexOf("D") - (textTime.indexOf("C") + 1)));
+                }
+                return day;
                 break
             case 4:
-                return parseInt(textTime.substr(textTime.indexOf("D") + 1, textTime.indexOf("E") - (textTime.indexOf("D") + 1)));
+                if (textTime.includes("&")) {
+                month = parseInt(textTime.substr(textTime.indexOf("D") + 1, textTime.indexOf("E") - (textTime.indexOf("D") + 1)));
+                }
+                return month;
                 break
             case 5:
-                return parseInt(textTime.substr(textTime.indexOf("E") + 1, textTime.length - textTime.indexOf("E")));
+                if (textTime.includes("&")) {
+                year = parseInt(textTime.substr(textTime.indexOf("E") + 1, textTime.length - textTime.indexOf("E")));
+                }
+                return year
                 break
             default:
                 return 0
