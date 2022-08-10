@@ -57,7 +57,7 @@ namespace EIUFablabIoT {
                 return parseInt(textTime.substr(textTime.indexOf("D") + 1, textTime.indexOf("E") - (textTime.indexOf("D") + 1)));
                 break
             case 5:
-                return parseInt(textTime.substr(textTime.indexOf("E") + 1, textTime.indexOf("$") - (textTime.indexOf("E"))));
+                return parseInt(textTime.substr(textTime.indexOf("E") + 1, textTime.indexOf("$") - textTime.indexOf("E")+1));
                 break
             default:
                 return 0
