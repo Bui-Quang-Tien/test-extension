@@ -44,7 +44,7 @@ namespace EIUFablabIoT {
     * @param textTime is the string form Iot module, eg: "hh:mm:ss"
     */
     //% blockId=GetTime
-    //% block="$data" form $textTime weight=40
+    //% block="$data form $textTime" weight=40
     export function getTime(data: TimeType,textTime: string ): number {
         requiredTime();
         switch (data) {
