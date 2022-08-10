@@ -2,7 +2,7 @@
  * MakeCode editor extension for EIU FABLAB Iot module
  * by Tien Bui
  */
-//% block="EIU Fablab IoT" weight=20 color=#00ff00 icon="☁"
+//% block="EIU Fablab IoT" weight=20 color=#660066 icon="☁"
 namespace EIUFablabIoT {
     export enum TimeType {
         //% block="second" enumval=0
@@ -33,7 +33,7 @@ namespace EIUFablabIoT {
         if((input.runningTime() - milisecond) >= 1000){
             serial.writeLine("#tim@sync$");
             milisecond = input.runningTime();
-            basic.pause(100);
+            basic.pause(50);
         } 
     //    textTime = serial.readUntil(serial.delimiters(Delimiters.Dollar));
     }
@@ -42,7 +42,7 @@ namespace EIUFablabIoT {
     * @param textTime is the string form Iot module, eg: "hh:mm:ss"
     */
     //% blockId=GetTime
-    //% block="$data form $textTime" weight=40
+    //% block="Get $data form $textTime" weight=40
     export function getTime(data: TimeType,textTime: string ): number {
         requiredTime();
         switch (data) {
