@@ -32,7 +32,7 @@ namespace EIUFablabIoT {
     
      function requiredTime(): void {
         serial.writeLine("#tim@sync$");
-        basic.pause(10);
+        basic.pause(100);
         textTime = serial.readUntil(serial.delimiters(Delimiters.Dollar));
     }
     /**
