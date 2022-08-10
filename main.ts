@@ -24,6 +24,7 @@ namespace EIUFablabIoT {
     let day: number
     let month: number
     let year: number
+    let milisecond = 0
    // let textTime: string
     /**
     * Required time form Blynk server
@@ -31,13 +32,16 @@ namespace EIUFablabIoT {
     //% blockId=RequiredTime
     
      function requiredTime(): void {
-        serial.writeLine("#tim@sync$");
-        basic.pause(100);
+        if((input.runningTime() - milisecond) >= 1000){
+            serial.writeLine("#tim@sync$");
+            milisecond = input.runningTime();
+            basic.pause(100);
+        } 
     //    textTime = serial.readUntil(serial.delimiters(Delimiters.Dollar));
     }
     /**
     * Get time form Blynk server
-    * 
+    * @param textTime is the string form Iot module, eg: "hh:mm:ss"
     */
     //% blockId=GetTime
     //% block="$data" form $textTime weight=40
